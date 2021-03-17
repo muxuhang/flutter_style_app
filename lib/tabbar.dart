@@ -1,10 +1,9 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:my_app/screens/cart.dart';
 import 'package:my_app/screens/home.dart';
 import 'package:my_app/screens/recommend.dart';
 import 'package:my_app/screens/user.dart';
+import 'package:my_app/widgets/SlideTransitionX.dart';
 
 class TabbarPage extends StatefulWidget {
   TabbarPage({Key key}) : super(key: key);
@@ -15,8 +14,8 @@ class TabbarPage extends StatefulWidget {
 
 class _TabbarPageState extends State<TabbarPage> {
   // 当前页面index
-  int currentKey = 0;
-  double _begin = 0.0;
+  int oldKey = 4;
+  int currentKey = 4;
   double _left = 0.0;
   // 底部菜单
   final navItems = [
@@ -50,6 +49,7 @@ class _TabbarPageState extends State<TabbarPage> {
             onTap: (int key) {
               if (currentKey != key && key != 2) {
                 setState(() {
+                  oldKey = currentKey;
                   currentKey = key;
                 });
               } else {
@@ -58,10 +58,22 @@ class _TabbarPageState extends State<TabbarPage> {
             },
           )),
       body: GestureDetector(
-        child: pages[currentKey],
+        child: AnimatedSwitcher(
+            duration: Duration(milliseconds: 100),
+            child: pages[currentKey],
+            transitionBuilder: (Widget child, Animation<double> animation) {
+              return SlideTransitionX(
+                child: child,
+                direction: oldKey < currentKey
+                    ? AxisDirection.left
+                    : AxisDirection.right, //上入下出
+                position: animation,
+              );
+            }),
         onPanDown: (DragDownDetails e) {
-          _begin = _left;
-          print('用户手指按下: ${e.globalPosition}');
+          setState(() {
+            _left = 0.0;
+          });
         },
         onPanUpdate: (DragUpdateDetails e) {
           setState(() {
@@ -69,16 +81,17 @@ class _TabbarPageState extends State<TabbarPage> {
           });
         },
         onPanEnd: (DragEndDetails e) {
-          print(
-              '${_left.toString()},${_begin.toString()},${currentKey.toString()}');
-          if (_left > _begin + 50 && currentKey > 0) {
+          if (_left > 100 && currentKey > 0) {
             setState(() {
+              oldKey = currentKey;
               currentKey = currentKey - (currentKey == 3 ? 2 : 1);
             });
           }
-          if (_begin > _left + 50 && currentKey < 4) {
-            print(currentKey.toString());
-            currentKey = currentKey + (currentKey == 1 ? 2 : 1);
+          if (_left < -100 && currentKey < 4) {
+            setState(() {
+              oldKey = currentKey;
+              currentKey = currentKey + (currentKey == 1 ? 2 : 1);
+            });
           }
         },
       ),

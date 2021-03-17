@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/screens/demo.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
@@ -13,18 +12,9 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          ElevatedButton(
-            onPressed: () => {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return DemoPage();
-              }))
-            },
-            child: Text('跳转'),
-          ),
-        ],
+      child: Container(
+        height: 500,
+        color: Colors.red,
       ),
     ));
   }
