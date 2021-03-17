@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/screens/user.dart';
+import 'package:my_app/screens/demo.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
@@ -19,7 +19,7 @@ class _HomePageState extends State<HomePage> {
           ElevatedButton(
             onPressed: () => {
               Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return UserPage();
+                return DemoPage();
               }))
             },
             child: Text('跳转'),

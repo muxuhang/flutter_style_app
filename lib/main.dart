@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/screens/tabbar.dart';
+import 'package:my_app/tabbar.dart';
 
 void main() {
   runApp(MyApp());
