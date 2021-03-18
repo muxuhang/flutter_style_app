@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:my_app/widgets/Box.dart';
+import 'package:my_app/widgets/Button.dart';
 
 class UserPage extends StatefulWidget {
   UserPage({Key key}) : super(key: key);
-
   @override
   _UserPageState createState() => _UserPageState();
 }
 
 class _UserPageState extends State<UserPage> {
+  final list = [
+    {"name": "待支付", "icon": Icons.grid_view},
+    {"name": "待发货", "icon": Icons.grid_view},
+    {"name": "待收货", "icon": Icons.grid_view},
+    {"name": "售后/退款", "icon": Icons.grid_view},
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,55 +69,36 @@ class _UserPageState extends State<UserPage> {
                 ],
               ),
             ),
-            Container(
-              margin: EdgeInsets.only(left: 20, right: 20, top: 20),
-              padding: EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(10),
-                  ),
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.white10,
-                      spreadRadius: 1,
-                      blurRadius: 1,
-                    )
-                  ]),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    '我的钱包',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(top: 20),
-                    child: Flex(
-                      direction: Axis.horizontal,
-                      children: [
-                        Flexible(
-                          flex: 1,
-                          child: Column(
-                            children: [
-                              Container(
-                                height: 50,
-                                width: 50,
-                                color: Colors.blue,
-                              ),
-                              Text('111'),
-                            ],
-                          ),
-                        ),
-                      ],
+            MyBox(
+              title: '我的订单',
+              children: list
+                  .map(
+                    (e) => MyButton(
+                      text: e['name'],
+                      icon: e['icon'],
+                      color: Colors.black87,
+                      onTap: () => {
+                        print(e['name']),
+                      },
                     ),
                   )
-                ],
-              ),
+                  .toList(),
             ),
+            MyBox(
+              title: '我的订单',
+              children: list
+                  .map(
+                    (e) => MyButton(
+                      text: e['name'],
+                      icon: e['icon'],
+                      color: Colors.black87,
+                      onTap: () => {
+                        print(e['name']),
+                      },
+                    ),
+                  )
+                  .toList(),
+            )
           ],
         ),
       ),

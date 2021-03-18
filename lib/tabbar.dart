@@ -14,8 +14,8 @@ class TabbarPage extends StatefulWidget {
 
 class _TabbarPageState extends State<TabbarPage> {
   // 当前页面index
-  int oldKey = 4;
-  int currentKey = 4;
+  int oldKey = 0;
+  int currentKey = 0;
   double _left = 0.0;
   // 底部菜单
   final navItems = [
