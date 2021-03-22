@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:my_app/screens/home/Search.dart';
+import 'package:my_app/screens/home/Swiper.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
@@ -11,11 +13,12 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Center(
-      child: Container(
-        height: 500,
-        color: Colors.red,
+      body: ListView(
+        children: [
+          HomeSearch(),
+          HomeSwiper(),
+        ],
       ),
-    ));
+    );
   }
 }

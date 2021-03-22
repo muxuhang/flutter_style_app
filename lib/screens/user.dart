@@ -20,11 +20,10 @@ class _UserPageState extends State<UserPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
+        child: ListView(
+          children: [
             Container(
-              padding: EdgeInsets.only(left: 20, right: 20),
+              padding: EdgeInsets.only(left: 20, right: 20, top: 10),
               child: Flex(
                 direction: Axis.horizontal,
                 children: [

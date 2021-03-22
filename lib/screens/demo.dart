@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/screens/user.dart';
 
 class DemoPage extends StatefulWidget {
   DemoPage({Key key}) : super(key: key);

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/screens/cart.dart';
 import 'package:my_app/screens/home.dart';
-import 'package:my_app/screens/recommend.dart';
 import 'package:my_app/screens/user.dart';
 import 'package:my_app/widgets/SlideTransitionX.dart';
 
@@ -20,19 +18,15 @@ class _TabbarPageState extends State<TabbarPage> {
   // 底部菜单
   final navItems = [
     BottomNavigationBarItem(icon: Icon(Icons.home), label: '首页'),
-    BottomNavigationBarItem(icon: Icon(Icons.recommend), label: '推荐'),
-    BottomNavigationBarItem(icon: Icon(null), label: '扫码'),
-    BottomNavigationBarItem(icon: Icon(Icons.shop), label: '购物车'),
-    BottomNavigationBarItem(icon: Icon(Icons.account_box), label: '个人中心'),
+    BottomNavigationBarItem(icon: Icon(Icons.account_box), label: '我的'),
   ];
   // 对应页面
-  final pages = [HomePage(), RecommendPage(), '', CartPage(), UserPage()];
+  final pages = [HomePage(), UserPage()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.qr_code_rounded),
-        tooltip: '添加',
         onPressed: () => {},
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -59,7 +53,7 @@ class _TabbarPageState extends State<TabbarPage> {
           )),
       body: GestureDetector(
         child: AnimatedSwitcher(
-            duration: Duration(milliseconds: 100),
+            duration: Duration(milliseconds: 200),
             child: pages[currentKey],
             transitionBuilder: (Widget child, Animation<double> animation) {
               return SlideTransitionX(
@@ -84,13 +78,13 @@ class _TabbarPageState extends State<TabbarPage> {
           if (_left > 100 && currentKey > 0) {
             setState(() {
               oldKey = currentKey;
-              currentKey = currentKey - (currentKey == 3 ? 2 : 1);
+              currentKey = currentKey - 1;
             });
           }
           if (_left < -100 && currentKey < 4) {
             setState(() {
               oldKey = currentKey;
-              currentKey = currentKey + (currentKey == 1 ? 2 : 1);
+              currentKey = currentKey + 1;
             });
           }
         },

@@ -12,6 +12,9 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        brightness: Brightness.light,
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
       ),
       home: TabbarPage(),
     );
