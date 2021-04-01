@@ -9,6 +9,7 @@ class HomeSwiper extends StatelessWidget {
     final width = MediaQuery.of(context).size.width;
     return Container(
       height: (width - 40) * 0.46,
+      padding: EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(),
       child: Swiper(
         itemCount: 2,

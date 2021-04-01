@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:my_app/widgets/OpacityButton.dart';
 
 class HomeSearch extends StatelessWidget {
-  HomeSearch({Key key}) : super(key: key);
+  HomeSearch({Key key, this.leftPress}) : super(key: key);
+  final Function leftPress;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -17,11 +18,7 @@ class HomeSearch extends StatelessWidget {
             child: Container(
               padding: EdgeInsets.only(right: 10),
               child: OpacityButton(
-                onTap: () async => {
-                  // await CityPickers.showCityPicker(
-                  //   context: context,
-                  // )
-                },
+                onTap: leftPress,
                 child: ConstrainedBox(
                   constraints: BoxConstraints(
                     maxWidth: 70,
