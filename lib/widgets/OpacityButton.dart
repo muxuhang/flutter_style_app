@@ -19,18 +19,18 @@ class OpacityButton extends StatefulWidget {
 }
 
 class _OpacityButtonState extends State<OpacityButton> {
-  double _opacity = 1.0;
+  double _opacity = 1;
   @override
   Widget build(BuildContext context) {
     return AnimatedOpacity(
-      duration: Duration(milliseconds: 100),
+      duration: Duration(milliseconds: 50),
       opacity: _opacity,
       child: GestureDetector(
         child: widget.child,
         onTap: widget.onTap,
         onTapDown: (details) {
           setState(() {
-            _opacity = widget.opacity != null ? widget.opacity : 0.6;
+            _opacity = widget.opacity != null ? widget.opacity : .8;
           });
         },
         onTapCancel: () {
