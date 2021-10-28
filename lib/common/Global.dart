@@ -17,7 +17,8 @@ const _themes = <MaterialColor>[
 ];
 
 class Global {
-  static SharedPreferences _prefs;
+  static SharedPreferences _prefs =
+      SharedPreferences.getInstance() as SharedPreferences;
   static Profile profile = Profile();
   // 网络缓存对象
   static NetCache netCache = NetCache();
@@ -41,7 +42,7 @@ class Global {
     }
 
     // 如果没有缓存策略，设置默认缓存策略
-    profile.cache = profile.cache ?? CacheConfig()
+    profile.cache = profile.cache
       ..enable = true
       ..maxAge = 3600
       ..maxCount = 100;

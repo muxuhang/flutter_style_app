@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:my_app/common/Http.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({Key key}) : super(key: key);
+  HomePage({Key? key}) : super(key: key);
   @override
   _DemoPageState createState() => _DemoPageState();
 }
@@ -18,7 +18,8 @@ class _DemoPageState extends State<HomePage>
 
   void getData() async {
     var result = await Http().getArtistList();
-    print(result);
+    print('result');
+    print(result.toString());
   }
 
   @override

@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 
 class MyBox extends StatelessWidget {
-  MyBox({Key key, this.title, this.children}) : super(key: key);
-  final title;
+  MyBox({
+    Key? key,
+    required this.title,
+    required this.children,
+  }) : super(key: key);
+  final String title;
   final List<Widget> children;
   @override
   Widget build(BuildContext context) {
@@ -16,7 +20,7 @@ class MyBox extends StatelessWidget {
           color: Colors.white,
           boxShadow: [
             BoxShadow(
-              color: Colors.grey[100],
+              color: Colors.grey,
               spreadRadius: 2,
               blurRadius: 1,
             )

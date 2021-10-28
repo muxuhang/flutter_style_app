@@ -4,16 +4,16 @@ import 'package:waterfall_flow/waterfall_flow.dart';
 
 class ListBox extends StatefulWidget {
   ListBox({
-    Key key,
-    this.renderHeadContainer,
-    this.renderFootContainer,
+    Key? key,
+    required this.renderHeadContainer,
+    required this.renderFootContainer,
     this.spacing = 5,
     this.rowNums = 2,
-    this.padding,
-    this.list,
-    this.renderItem,
-    this.loadMore,
-    this.refresh,
+    required this.padding,
+    required this.list,
+    required this.renderItem,
+    required this.loadMore,
+    required this.refresh,
   }) : super(key: key);
   final Widget renderHeadContainer;
   final Widget renderFootContainer;

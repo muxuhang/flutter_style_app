@@ -29,7 +29,7 @@ class NetCache extends Interceptor {
     // ignore: non_constant_identifier_names
     RequestInterceptorHandler,
   ) async {
-    if (!Global.profile.cache.enable) return options;
+    if (!Global.profile.cache.enable) RequestInterceptorHandler.next(options);
     // refresh标记是否是"下拉刷新"
     bool refresh = options.extra["refresh"] == true;
     //如果是下拉刷新，先删除相关缓存
@@ -41,7 +41,7 @@ class NetCache extends Interceptor {
         // 如果不是列表，则只删除uri相同的缓存
         delete(options.uri.toString());
       }
-      return options;
+      RequestInterceptorHandler.next(options);
     }
     if (options.extra["noCache"] != true &&
         options.method.toLowerCase() == 'get') {
@@ -51,7 +51,7 @@ class NetCache extends Interceptor {
         //若缓存未过期，则返回缓存内容
         if ((DateTime.now().millisecondsSinceEpoch - ob.timeStamp) / 1000 <
             Global.profile.cache.maxAge) {
-          return cache[key].response;
+          // return cache[key].response;
         } else {
           //若已过期则删除缓存，继续向服务器请求
           cache.remove(key);

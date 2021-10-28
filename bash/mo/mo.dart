@@ -59,14 +59,15 @@ String changeFirstChar(String str, [bool upper = true]) {
 //将JSON类型转为对应的dart类型
 String getType(v, Set<String> set, String current) {
   current = current.toLowerCase();
+  String tt = 'String';
   if (v is bool) {
-    return "bool";
+    tt = "bool";
   } else if (v is num) {
-    return "num";
+    tt = "num";
   } else if (v is Map) {
-    return "Map<String,dynamic>";
+    tt = "Map<String,dynamic>";
   } else if (v is List) {
-    return "List";
+    tt = "List";
   } else if (v is String) {
     //处理特殊标志
     if (v.startsWith("$TAG[]")) {
@@ -74,18 +75,20 @@ String getType(v, Set<String> set, String current) {
       if (className.toLowerCase() != current) {
         set.add('import "$className.dart"');
       }
-      return "List<${changeFirstChar(className)}>";
+      tt = "List<${changeFirstChar(className)}>";
     } else if (v.startsWith(TAG)) {
       var fileName = changeFirstChar(v.substring(1), false);
       if (fileName.toLowerCase() != current) {
         set.add('import "$fileName.dart"');
       }
-      return changeFirstChar(fileName);
+      tt = changeFirstChar(fileName);
+    } else {
+      tt = "String";
     }
-    return "String";
   } else {
-    return "String";
+    tt = "String";
   }
+  return 'late ' + tt;
 }
 
 //替换模板占位符

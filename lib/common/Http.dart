@@ -9,13 +9,13 @@ import 'package:my_app/models/artistList.dart';
 class Http {
   // 在网络请求过程中可能会需要使用当前的context信息，比如在请求失败时
   // 打开一个新路由，而打开新路由需要context信息。
-  Http([this.context]) {
+  Http([context = '']) {
     _options = Options(extra: {"context": context});
   }
 
-  BuildContext context;
+  late BuildContext context;
   // ignore: unused_field
-  Options _options;
+  late Options _options;
   static Dio dio = new Dio(BaseOptions(
     baseUrl: 'http://127.0.0.1:3000',
     headers: {
@@ -106,7 +106,6 @@ class Http {
     var r = await dio.get(
       "/artist/list",
     );
-    print(r);
-    return 'ArtistList.fromJson(r.data)';
+    return ArtistList.fromJson(r.data);
   }
 }

@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 // # ignore: must_be_immutable
 class OpacityButton extends StatefulWidget {
   OpacityButton({
-    Key key,
+    Key? key,
     this.text,
     this.opacity,
     this.child,
     this.onTap,
   }) : super(key: key);
   final text;
-  final double opacity;
-  final Widget child;
+  final opacity;
+  final child;
   final onTap;
   // final Icon icon;
   @override

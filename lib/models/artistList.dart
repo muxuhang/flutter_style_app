@@ -6,9 +6,9 @@ part 'artistList.g.dart';
 class ArtistList {
     ArtistList();
 
-    List artists;
-    bool more;
-    num code;
+    late List artists;
+    late bool more;
+    late num code;
     
     factory ArtistList.fromJson(Map<String,dynamic> json) => _$ArtistListFromJson(json);
     Map<String, dynamic> toJson() => _$ArtistListToJson(this);

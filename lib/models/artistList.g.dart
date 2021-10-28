@@ -8,7 +8,7 @@ part of 'artistList.dart';
 
 ArtistList _$ArtistListFromJson(Map<String, dynamic> json) {
   return ArtistList()
-    ..artists = json['artists'] as List
+    ..artists = json['artists'] as List<dynamic>
     ..more = json['more'] as bool
     ..code = json['code'] as num;
 }

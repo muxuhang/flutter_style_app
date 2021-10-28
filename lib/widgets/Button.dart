@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 // # ignore: must_be_immutable
 class MyButton extends StatelessWidget {
   MyButton({
-    Key key,
+    Key? key,
     this.text,
     this.onTap,
     this.icon,
@@ -13,7 +13,7 @@ class MyButton extends StatelessWidget {
   final text;
   final onTap;
   final icon;
-  final double iconSize;
+  final iconSize;
   final color;
   // final Icon icon;
   @override
